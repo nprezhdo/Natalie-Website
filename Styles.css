@@ -1,0 +1,74 @@
+body{
+  background-color: rgb(250,200,200);
+}
+.textBox{
+  background-color: rgb(250,150,200);
+  border-width: thin;
+  border-color: Black;
+  width: 200px;
+  height: 150px;
+  font-style: italic;
+  border-radius: 25px;
+  text-align: center;
+}
+.cherryBlossom{
+   width: 1000;
+   height: 200;
+
+   <h1 style="color: red; font-size: 32px;">
+}
+.simon{
+  length: 200;
+  height: 200;
+}
+.green{
+  background-color: rgb(133, 212, 149);
+  width: 100px;
+  height: 50px;
+  text-align: center;
+}
+.greenLit{
+  background-color: rgb(102, 204, 123);
+  width: 100px;
+  height: 50px;
+  text-align: center;
+}
+.pink{
+  background-color: pink;
+  width: 100px;
+  height: 50px;
+  text-align: center;
+}
+.blue{
+  background-color: rgb(153, 186, 232);
+  width: 100px;
+  height: 50px;
+  text-align: center;
+}
+.yellow{
+  background-color: rgb(232, 218, 153);
+  width: 100px;
+  height: 50px;
+  text-align: center;
+}
+.red{
+  background-color: rgb(235, 141, 141);
+  width: 100px;
+  height: 50px;
+  text-align: center;
+}
+.p1 {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.p2 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.p3 {
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bolder;
+}
+.pinkText{
+  color: rgb(171, 77, 132);
+}
