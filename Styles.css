@@ -27,14 +27,8 @@ body{
   height: 50px;
   text-align: center;
 }
-.greenLit{
-  background-color: rgb(102, 204, 123);
-  width: 100px;
-  height: 50px;
-  text-align: center;
-}
-.pink{
-  background-color: pink;
+.lit{
+  background-color: white;
   width: 100px;
   height: 50px;
   text-align: center;

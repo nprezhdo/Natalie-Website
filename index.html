@@ -10,6 +10,7 @@
 
     <p class = "textBox"> ABOUT ME: <br> I really like minesweeper <br> though I'm bad at programming <br> I still sometimes find it fun <br> it can be very rewarding</p>
     <p class = "p3"> Simon Says:</p>
+    <button class ="p2 pinktText" id=startButton > START </button>
     <div class = "simon">
       <button class ="green p2 pinkText" id=greenButton > GREEN </button>
       <button class ="red p2 pinkText" id=redButton> RED </button>
@@ -19,11 +20,35 @@
     <p id=demo> </p>
   </body>
   <script>
-  function hello(){
-    console.log("hello");
+  function lightup( String buttonName, String color){
+    document.getElementById(buttonName).classList.remove(color);
+    document.getElementById(buttonName).classList.add("lit");
   }
-  document.getElementById("greenButton").addEventListener("click", function() {
-  document.getElementById("demo").innerHTML = "You Lost";
-  document.getElementById("greenButton").addEventListener("click", hello());
+  var simonArray = []
+  document.getElementById("startButton").addEventListener("click", function() {
+    var wrongButton = false;
+    var simonArray = [];
+      while(wrongButton == false){
+        //Makes all buttons white
+        var greenbut = document.getElementById("greenButton");
+        var redbut = document.getElementById("redButton");
+        var yellowbut = document.getElementById("yellowButton");
+        var bluebut = document.getElementById("blueButton");
+         greenbut.classList.remove("green");
+         greenbut.classList.add("lit");
+          redbut.classList.remove("red");
+          redbut.classList.add("lit");
+          bluebut.classList.remove("blue");
+          bluebut.classList.add("lit");
+          yellowbut.classList.remove("yellow");
+          yellowbut.classList.add("lit");
+        simonArray.push(Math.floor(Math.random() * 4));
+        for (num in simonArray){
+          document.getElementById("demo").innerHTML = num;
+        }
+        //Shows Order
+        wrongButton = true;
+      }
+});
   </script>
 </html>
