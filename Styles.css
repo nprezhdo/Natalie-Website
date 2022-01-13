@@ -23,33 +23,31 @@ body{
 }
 .green{
   background-color: rgb(133, 212, 149);
-  width: 100px;
-  height: 50px;
+
   text-align: center;
 }
 .lit{
-  background-color: white;
-  width: 100px;
-  height: 50px;
+  background-color: rgb(256,256,256);
   text-align: center;
 }
 .blue{
   background-color: rgb(153, 186, 232);
-  width: 100px;
-  height: 50px;
+
   text-align: center;
 }
 .yellow{
   background-color: rgb(232, 218, 153);
-  width: 100px;
-  height: 50px;
+
   text-align: center;
 }
 .red{
   background-color: rgb(235, 141, 141);
+
+  text-align: center;
+}
+.size{
   width: 100px;
   height: 50px;
-  text-align: center;
 }
 .p1 {
   font-family: "Times New Roman", Times, serif;

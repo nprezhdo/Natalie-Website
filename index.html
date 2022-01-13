@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+howManyChecked<!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="stylesheet" href="Styles.css">
@@ -10,45 +10,224 @@
 
     <p class = "textBox"> ABOUT ME: <br> I really like minesweeper <br> though I'm bad at programming <br> I still sometimes find it fun <br> it can be very rewarding</p>
     <p class = "p3"> Simon Says:</p>
-    <button class ="p2 pinktText" id=startButton > START </button>
+    <button class ="p2 pinktText" id=startButton> START </button>
     <div class = "simon">
-      <button class ="green p2 pinkText" id=greenButton > GREEN </button>
-      <button class ="red p2 pinkText" id=redButton> RED </button>
-      <button class ="blue p2 pinkText" id=blueButton> BLUE </button>
-      <button class ="yellow p2 pinkText" id=yellowButton> YELLOW </button>
+      <button class ="green size p2 pinkText" id=greenButton > GREEN </button>
+      <button class ="red p2 size pinkText" id=redButton> RED </button>
+      <button class ="blue p2 size pinkText" id=blueButton> BLUE </button>
+      <button class ="yellow p2 size pinkText" id=yellowButton> YELLOW </button>
     </div>
     <p id=demo> </p>
   </body>
   <script>
-  function lightup( String buttonName, String color){
-    document.getElementById(buttonName).classList.remove(color);
-    document.getElementById(buttonName).classList.add("lit");
+
+
+  var orderComputer = [];
+  var orderUser = [];
+  var howManyChecked;
+
+  function reload() {
+    orderComputer = [];
+    var orderUser = [];
+    location.reload();
   }
-  var simonArray = []
-  document.getElementById("startButton").addEventListener("click", function() {
-    var wrongButton = false;
-    var simonArray = [];
-      while(wrongButton == false){
-        //Makes all buttons white
-        var greenbut = document.getElementById("greenButton");
-        var redbut = document.getElementById("redButton");
-        var yellowbut = document.getElementById("yellowButton");
-        var bluebut = document.getElementById("blueButton");
-         greenbut.classList.remove("green");
-         greenbut.classList.add("lit");
-          redbut.classList.remove("red");
-          redbut.classList.add("lit");
-          bluebut.classList.remove("blue");
-          bluebut.classList.add("lit");
-          yellowbut.classList.remove("yellow");
-          yellowbut.classList.add("lit");
-        simonArray.push(Math.floor(Math.random() * 4));
-        for (num in simonArray){
-          document.getElementById("demo").innerHTML = num;
-        }
-        //Shows Order
-        wrongButton = true;
-      }
-});
+
+  function makeUnclickable() {
+    document.getElementById("redButton").disabled = true;
+    document.getElementById("greenButton").disabled = true;
+    document.getElementById("blueButton").disabled = true;
+    document.getElementById("yellowButton").disabled = true;
+  }
+
+  function check() {
+    if (orderUser.at(-1) == orderComputer.at(howManyChecked)) {
+      howManyChecked++;
+      checkEnd();
+    } else {
+      document.getElementById("startButton").disabled = false;
+      document.getElementById("startButton").addEventListener("click",reload);
+      makeUnclickable();
+      setTimeout(function() {
+        makeUnclickable();
+      },1);
+    }
+  }
+
+  function makeClickable() {
+    document.getElementById("redButton").disabled = false;
+    document.getElementById("greenButton").disabled = false;
+    document.getElementById("blueButton").disabled = false;
+    document.getElementById("yellowButton").disabled = false;
+  }
+
+
+
+
+  function checkEnd() {
+    if (orderUser.length == orderComputer.length) {
+      orderComputer = orderUser;
+      orderUser = [];
+      howManyChecked = 0;
+      setTimeout(function() {
+        startRound();
+      },600);
+    }
+  }
+
+  function flash(num) {
+    var redBut = document.getElementById("redButton");
+    var greenBut = document.getElementById("greenButton");
+    var blueBut = document.getElementById("blueButton");
+    var yellowBut = document.getElementById("yellowButton");
+    switch (color) {
+      case 0:
+        var list = redBut.classList;
+        list.remove("red");
+        list.add("lit");
+        setTimeout(function() {
+          list.remove("lit");
+          list.add("red");
+        },300);
+        break;
+      case 1:
+        var list = greenBut.classList;
+        list.remove("green");
+        list.add("lit");
+        setTimeout(function() {
+          list.remove("lit");
+          list.add("green");
+        },300);
+        break;
+      case 2:
+        var list = blueBut.classList;
+        list.remove("blue");
+        list.add("lit");
+        setTimeout(function() {
+          list.remove("lit");
+          list.add("blue");
+        },300);
+        break;
+      case 3:
+        var list = yellowBut.classList;
+        list.remove("yellow");
+        list.add("lit");
+        setTimeout(function() {
+          list.remove("lit");
+          list.add("yellow");
+        },300);
+        break;
+    }
+  }
+
+  function flashWhileClicking(num) {
+    var redBut = document.getElementById("redButton");
+    var greenBut= document.getElementById("greenButton");
+    var blueBut = document.getElementById("blueButton");
+    var yellowBut = document.getElementById("yellowButton");
+    switch (color) {
+      case 0:
+        var list = redBut.classList;
+        list.remove("red");
+        list.add("lit");
+        setTimeout(function() {
+          list.remove("lit");
+          list.add("red");
+        },50);
+        break;
+      case 1:
+        var list = greenBut.classList;
+        list.remove("green");
+        list.add("lit");
+        setTimeout(function() {
+          list.remove("lit");
+          list.add("green");
+        },50);
+        break;
+      case 2:
+        var list = blueBut.classList;
+        list.remove("blue");
+        list.add("lit");
+        setTimeout(function() {
+          list.remove("lit");
+          list.add("blue");
+        },50);
+        break;
+      case 3:
+        var list = yellowBut.classList;
+        list.remove("yellow");
+        list.add("lit");
+        setTimeout(function() {
+          list.remove("lit");
+          list.add("yellow");
+        },50);
+        break;
+    }
+  }
+
+  function randomColor() {
+    return Math.floor(Math.random() * 4);
+
+  }
+
+  function clickedR() {
+    orderUser.push(0);
+    makeUnclickable();
+    flashWhileClicking(0);
+    setTimeout(function() {
+      check();
+      makeClickable();
+    },200);
+  }
+
+  function clickedGr() {
+    orderUser.push(1);
+    makeUnclickable();
+    flashWhileClicking(1);
+    setTimeout(function() {
+      check();
+      makeClickable();
+    },200);
+  }
+
+  function clickedB() {
+    orderUser.push(2);
+    makeUnclickable();
+    flashWhileClicking(2);
+    setTimeout(function() {
+      check();
+      makeClickable();
+    },200);
+  }
+
+  function clickedYel() {
+    orderUser.push(3);
+    makeUnclickable();
+    flashWhileClicking(3);
+    setTimeout(function() {
+      check();
+      makeClickable();
+    },200);
+  }
+
+  function startRound() {
+    makeClickable();
+    orderComputer.push(randomColor());
+    for (let i = 0; i < orderComputer.length; i++) {
+      setTimeout(function() {
+        flash(orderComputer[i]);
+      },600*i);
+    }
+    setTimeout(function() {
+      makeClickable();
+    },500*orderComputer.length);
+    document.getElementById("startButton").disabled = true;
+  }
+
+  makeUnclickable();
+  document.getElementById("startButton").addEventListener("click",startRound);
+  document.getElementById("redButton").addEventListener("click",red);
+  document.getElementById("greenButton").addEventListener("click",green);
+  document.getElementById("blueButton").addEventListener("click",blue);
+  document.getElementById("yellowButton").addEventListener("click",yellow);
   </script>
 </html>
