@@ -7,6 +7,7 @@ function drawArt(ctx) {
     ctx.save();
   let time2 = new Date();
  ctx.translate(time2.getSeconds(), 0);
+ ctx.restore();
 
   ctx.beginPath();
   ctx.arc(0, 0, 100, 0, Math.PI * 2, false);
@@ -14,45 +15,52 @@ function drawArt(ctx) {
 
 
   // Draw rectangle
+  ctx.save();
   ctx.beginPath();
   ctx.moveTo(-80, -175);
   ctx.lineTo(80, -175);
-  ctx.lineTo(80, 20);
-  ctx.lineTo(-80, 20);
-  ctx.lineTo(-80,-175);
+  ctx.quadraticCurveTo(-20,-100,10,0)
+  //ctx.lineTo(80, 20);
+  ctx.lineTo(-39, 9);
+  ctx.quadraticCurveTo(-150,-75,-80,-175);
   ctx.stroke();
+  ctx.restore();
 
+  ctx.save();
   ctx.beginPath();
   ctx.moveTo(0, 0);
   ctx.lineTo(-30, -30);
-  ctx.lineTo(-39, 9);
-  ctx.lineTo(-60,18);
-  ctx.lineTo(-42,30);
-  ctx.lineTo(-42, 63);
-  ctx.lineTo(0,36);
+  ctx.lineTo(-39, 9);//
+  ctx.lineTo(-70,18);
+  ctx.lineTo(-42,38);
+  ctx.lineTo(-42, 70);
+  ctx.lineTo(-10,36);
   ctx.lineTo(30,45);
-  ctx.lineTo(24,21);
+  ctx.lineTo(16,21);
   ctx.lineTo(39,-12);
   ctx.lineTo(0,0);
   ctx.stroke();
-
-  ctx.beginPath();
-  ctx.moveTo(-190, -120);
-  ctx.stroke();
-
-
+  ctx.restore();
 
   ctx.save();
   let time = new Date();
   ctx.rotate(time.getSeconds() + time.getMilliseconds() / 1000);
-  ctx.beginPath();
-  ctx.moveTo(-100, -180);
-  ctx.lineTo(140, 120);
+  let d = Math.min(200, 200);
+  let k = 25;
+  ctx.moveTo(k, k+d / 4);
+  ctx.quadraticCurveTo(k, k, k + d / 4, k);
+  ctx.quadraticCurveTo(k + d / 2, k, k + d / 2, k + d / 4);
+  ctx.quadraticCurveTo(k + d / 2, k, k + d * 3/4, k);
+  ctx.quadraticCurveTo(k + d, k, k + d, k + d / 4);
+  ctx.quadraticCurveTo(k + d, k + d / 2, k + d * 3/4, k + d * 3/4);
+  ctx.lineTo(k + d / 2, k + d);
+  ctx.lineTo(k + d / 4, k + d * 3/4);
+  ctx.quadraticCurveTo(k, k + d / 2, k, k + d / 4);
   ctx.stroke();
+  ctx.fill();
   ctx.restore();
 
-  ctx.fillRect(-160, 10, 100, 100);
-  ctx.restore();
+
 }
 
 function draw() {
