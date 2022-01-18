@@ -26,6 +26,9 @@ function drawArt(ctx) {
   ctx.stroke();
   ctx.restore();
 
+
+
+  //star
   ctx.save();
   ctx.beginPath();
   ctx.moveTo(0, 0);
@@ -39,26 +42,33 @@ function drawArt(ctx) {
   ctx.lineTo(16,21);
   ctx.lineTo(39,-12);
   ctx.lineTo(0,0);
+  ctx.fill();
   ctx.stroke();
   ctx.restore();
 
-  ctx.save();
-  let time = new Date();
-  ctx.rotate(time.getSeconds() + time.getMilliseconds() / 1000);
-  let d = Math.min(200, 200);
-  let k = 25;
-  ctx.moveTo(k, k+d / 4);
-  ctx.quadraticCurveTo(k, k, k + d / 4, k);
-  ctx.quadraticCurveTo(k + d / 2, k, k + d / 2, k + d / 4);
-  ctx.quadraticCurveTo(k + d / 2, k, k + d * 3/4, k);
-  ctx.quadraticCurveTo(k + d, k, k + d, k + d / 4);
-  ctx.quadraticCurveTo(k + d, k + d / 2, k + d * 3/4, k + d * 3/4);
-  ctx.lineTo(k + d / 2, k + d);
-  ctx.lineTo(k + d / 4, k + d * 3/4);
-  ctx.quadraticCurveTo(k, k + d / 2, k, k + d / 4);
-  ctx.stroke();
-  ctx.fill();
-  ctx.restore();
+
+    ctx.fillStyle = 'rgba(255, 255, 0, 1)';
+    //heart
+    ctx.save();
+    ctx.beginPath();
+    let time = new Date();
+    ctx.rotate(time.getSeconds() + time.getMilliseconds() / 1000);
+    let d = Math.min(200, 200);
+    let k = 25;
+    ctx.moveTo(k, k+d / 4);
+    ctx.quadraticCurveTo(k, k, k + d / 4, k);
+    ctx.quadraticCurveTo(k + d / 2, k, k + d / 2, k + d / 4);
+    ctx.quadraticCurveTo(k + d / 2, k, k + d * 3/4, k);
+    ctx.quadraticCurveTo(k + d, k, k + d, k + d / 4);
+    ctx.quadraticCurveTo(k + d, k + d / 2, k + d * 3/4, k + d * 3/4);
+    ctx.lineTo(k + d / 2, k + d);
+    ctx.lineTo(k + d / 4, k + d * 3/4);
+    ctx.quadraticCurveTo(k, k + d / 2, k, k + d / 4);
+    ctx.stroke();
+    ctx.fill();
+    ctx.restore();
+
+
 
 
 }
@@ -66,7 +76,7 @@ function drawArt(ctx) {
 function draw() {
   var ctx = document.getElementById('canvas').getContext('2d');
 
-  ctx.globalCompositeOperation = 'destination-over';
+  ctx.globalCompositeOperation = 'source-over';
   ctx.clearRect(0, 0, 900, 700); // clear canvas
 
   // Figure out what pen we wanna draw with
