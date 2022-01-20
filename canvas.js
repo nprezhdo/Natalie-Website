@@ -31,6 +31,8 @@ function drawArt(ctx) {
   //star
   ctx.save();
   ctx.beginPath();
+  let t = new Date();
+  ctx.rotate(t.getMilliseconds()/1000);
   ctx.moveTo(0, 0);
   ctx.lineTo(-30, -30);
   ctx.lineTo(-39, 9);//
