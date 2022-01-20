@@ -1,27 +1,32 @@
-howManyChecked<!DOCTYPE html>
+howManyChecked
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="Styles.css">
-    <img src="cherry blossom.gif" class = "cherryBlossom">
-    <h1>Natalie</h1>
 
-  </head>
-  <body>
+<head>
+  <link rel="stylesheet" href="Styles.css">
+  <img src="cherry blossom.gif" class="cherryBlossom">
+  <script src="canvas.js"></script>
+  <h1>Natalie</h1>
 
-    <p class = "textBox"> ABOUT ME: <br> I really like minesweeper <br> though I'm bad at programming <br> I still sometimes find it fun <br> it can be very rewarding</p>
-    <p class = "p3"> Simon Says:</p>
-    <button class ="p2 pinktText" id=startButton> START </button>
-    <div class = "simon">
-      <button class ="green size p2 pinkText" id=greenButton > GREEN </button>
-      <button class ="red p2 size pinkText" id=redButton> RED </button>
-      <button class ="blue p2 size pinkText" id=blueButton> BLUE </button>
-      <button class ="yellow p2 size pinkText" id=yellowButton> YELLOW </button>
-    </div>
-    <p id=demo> </p>
-  </body>
-  <script>
+</head>
 
+<body>
 
+  <p class="textBox"> ABOUT ME: <br> I really like minesweeper <br> though I'm bad at programming <br> I still sometimes find it fun <br> it can be very rewarding</p>
+  <p class="p3"> Simon Says:</p>
+  <button class="p2 pinktText" id=startButton> START </button>
+  <div class="simon">
+    <button class="green size p2 pinkText" id=greenButton> GREEN </button>
+    <button class="red p2 size pinkText" id=redButton> RED </button>
+    <button class="blue p2 size pinkText" id=blueButton> BLUE </button>
+    <button class="yellow p2 size pinkText" id=yellowButton> YELLOW </button>
+  </div>
+  <div id="draw">
+    <canvas id="canvas" width="900" height="500"></canvas>
+  </div>
+  <p id=demo> </p>
+</body>
+<script>
   var orderComputer = [];
   var orderUser = [];
   var howManyChecked;
@@ -45,11 +50,11 @@ howManyChecked<!DOCTYPE html>
       checkEnd();
     } else {
       document.getElementById("startButton").disabled = false;
-      document.getElementById("startButton").addEventListener("click",reload);
+      document.getElementById("startButton").addEventListener("click", reload);
       makeUnclickable();
       setTimeout(function() {
         makeUnclickable();
-      },1);
+      }, 1);
     }
   }
 
@@ -70,7 +75,7 @@ howManyChecked<!DOCTYPE html>
       howManyChecked = 0;
       setTimeout(function() {
         startRound();
-      },600);
+      }, 600);
     }
   }
 
@@ -87,7 +92,7 @@ howManyChecked<!DOCTYPE html>
         setTimeout(function() {
           list.remove("lit");
           list.add("red");
-        },300);
+        }, 300);
         break;
       case 1:
         var list = greenBut.classList;
@@ -96,7 +101,7 @@ howManyChecked<!DOCTYPE html>
         setTimeout(function() {
           list.remove("lit");
           list.add("green");
-        },300);
+        }, 300);
         break;
       case 2:
         var list = blueBut.classList;
@@ -105,7 +110,7 @@ howManyChecked<!DOCTYPE html>
         setTimeout(function() {
           list.remove("lit");
           list.add("blue");
-        },300);
+        }, 300);
         break;
       case 3:
         var list = yellowBut.classList;
@@ -114,14 +119,14 @@ howManyChecked<!DOCTYPE html>
         setTimeout(function() {
           list.remove("lit");
           list.add("yellow");
-        },300);
+        }, 300);
         break;
     }
   }
 
   function flashWhileClicking(num) {
     var redBut = document.getElementById("redButton");
-    var greenBut= document.getElementById("greenButton");
+    var greenBut = document.getElementById("greenButton");
     var blueBut = document.getElementById("blueButton");
     var yellowBut = document.getElementById("yellowButton");
     switch (color) {
@@ -132,7 +137,7 @@ howManyChecked<!DOCTYPE html>
         setTimeout(function() {
           list.remove("lit");
           list.add("red");
-        },50);
+        }, 50);
         break;
       case 1:
         var list = greenBut.classList;
@@ -141,7 +146,7 @@ howManyChecked<!DOCTYPE html>
         setTimeout(function() {
           list.remove("lit");
           list.add("green");
-        },50);
+        }, 50);
         break;
       case 2:
         var list = blueBut.classList;
@@ -150,7 +155,7 @@ howManyChecked<!DOCTYPE html>
         setTimeout(function() {
           list.remove("lit");
           list.add("blue");
-        },50);
+        }, 50);
         break;
       case 3:
         var list = yellowBut.classList;
@@ -159,7 +164,7 @@ howManyChecked<!DOCTYPE html>
         setTimeout(function() {
           list.remove("lit");
           list.add("yellow");
-        },50);
+        }, 50);
         break;
     }
   }
@@ -176,7 +181,7 @@ howManyChecked<!DOCTYPE html>
     setTimeout(function() {
       check();
       makeClickable();
-    },200);
+    }, 200);
   }
 
   function clickedGr() {
@@ -186,7 +191,7 @@ howManyChecked<!DOCTYPE html>
     setTimeout(function() {
       check();
       makeClickable();
-    },200);
+    }, 200);
   }
 
   function clickedB() {
@@ -196,7 +201,7 @@ howManyChecked<!DOCTYPE html>
     setTimeout(function() {
       check();
       makeClickable();
-    },200);
+    }, 200);
   }
 
   function clickedYel() {
@@ -206,7 +211,7 @@ howManyChecked<!DOCTYPE html>
     setTimeout(function() {
       check();
       makeClickable();
-    },200);
+    }, 200);
   }
 
   function startRound() {
@@ -215,19 +220,19 @@ howManyChecked<!DOCTYPE html>
     for (let i = 0; i < orderComputer.length; i++) {
       setTimeout(function() {
         flash(orderComputer[i]);
-      },600*i);
+      }, 600 * i);
     }
     setTimeout(function() {
       makeClickable();
-    },500*orderComputer.length);
+    }, 500 * orderComputer.length);
     document.getElementById("startButton").disabled = true;
   }
 
   makeUnclickable();
-  document.getElementById("startButton").addEventListener("click",startRound);
-  document.getElementById("redButton").addEventListener("click",red);
-  document.getElementById("greenButton").addEventListener("click",green);
-  document.getElementById("blueButton").addEventListener("click",blue);
-  document.getElementById("yellowButton").addEventListener("click",yellow);
-  </script>
+//  document.getElementById("redButton").addEventListener("click", red);
+  //document.getElementById("greenButton").addEventListener("click", green);
+//  document.getElementById("blueButton").addEventListener("click", blue);
+//  document.getElementById("yellowButton").addEventListener("click", yellow);
+</script>
+
 </html>
